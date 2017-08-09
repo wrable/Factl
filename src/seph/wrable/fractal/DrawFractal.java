@@ -52,7 +52,6 @@ public class DrawFractal extends JPanel {
 		super.paintComponent(g);
 		g.setColor(Color.red);
 		Graphics2D g2 = (Graphics2D) g;
-		//g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		for (char ch : this.lSystemValue.toCharArray()) {
 			if (ch == 'F') {
 				oldx = x;
