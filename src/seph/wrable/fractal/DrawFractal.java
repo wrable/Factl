@@ -59,8 +59,8 @@ public class DrawFractal extends JPanel {
 			{
 		        oldx = x;
 		        oldy = y;
-		        x += steplong * Math.cos(Math.toRadians(angle));
-		        y += steplong * Math.sin(Math.toRadians(angle));
+		        x += (int)(steplong * Math.cos(Math.toRadians(angle)));
+		        y += (int)(steplong * Math.sin(Math.toRadians(angle)));
 		        g.drawLine((int)oldx,(int)oldy, x, y);
 				
 			}
@@ -73,7 +73,7 @@ public class DrawFractal extends JPanel {
 				angle += iangle;
 			}
 		}
-		setSteplong(getSteplong()/4);
+		setSteplong(getSteplong()/2);
 	}
 
 	

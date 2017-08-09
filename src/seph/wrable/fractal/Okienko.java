@@ -10,7 +10,7 @@ public class Okienko {
 		 f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 f.setSize(800, 800);		 
 		 f.setVisible(true);
-		 DrawFractal d = new DrawFractal(200,200,100,120,"F+F-F-F+F");
+		 DrawFractal d = new DrawFractal(200,200,20,60,"F+F+F+F+F+F+F");
 		 f.add(d);
 
 		 }
