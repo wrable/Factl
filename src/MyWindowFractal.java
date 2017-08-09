@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-
+import seph.wrable.fractal.DrawFractal;
 import seph.wrable.fractal.GenFractal;
 
 public class MyWindowFractal extends JFrame implements ActionListener {
@@ -73,6 +73,12 @@ public class MyWindowFractal extends JFrame implements ActionListener {
 			Fractal.setAksjomat(tWprowadzAksjomat.getText());
 			Fractal.setRegula(tWprowadzRegule.getText());
 			tWyœwietlLSystem.setText(Fractal.FGenFractal());
+			JFrame f = new JFrame("Nowe okno");
+			 f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			 f.setSize(800, 800);		 
+			 f.setVisible(true);
+			 DrawFractal d = new DrawFractal(200,200,100,120,Fractal.FGenFractal());
+			 f.add(d);
 			
 		}
 		if (source == bWyjscie) {
