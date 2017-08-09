@@ -1,101 +1,74 @@
 package seph.wrable.fractal;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Shape;
+import java.awt.geom.Line2D;
+
 import javax.swing.JPanel;
 
 public class DrawFractal extends JPanel {
 	
-	private int x,y,steplong;
-	private double iangle , oldx , oldy,angle;
+	private double x, y,steplong,iangle, oldx, oldy, angle;
 	private String lSystemValue;
-	
+
 	/**
-	 * @param x szerokosc okna
-	 * @param y wysokosc okna 
-	 * @param steplong krok 
+	 * @param x
+	 *            szerokosc okna
+	 * @param y
+	 *            wysokosc okna
+	 * @param steplong
+	 *            krok
 	 */
-	public DrawFractal(int x, int y, int steplong,double iangle, String lSystemValue) {
+	public DrawFractal(double x, double y, double iangle, String lSystemValue) {
 		super();
-		this.x = x/2;
+		this.x = x / 2;
 		this.y = y;
-		this.steplong = steplong;
+		this.steplong = 10;
 		this.lSystemValue = lSystemValue;
 		this.iangle = iangle;
-		this.angle=0;
+		this.angle = 0;
 	}
 
-	public int getX() {
-		return x;
-	}
+	
 
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x = x;
 	}
 
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 
-	public int getSteplong() {
+	public double getSteplong() {
 		return steplong;
 	}
 
-	public void setSteplong(int steplong) {
+	public void setSteplong(double steplong) {
 		this.steplong = steplong;
 	}
 
-	
-	//dx=odleglosc*cos(kierunek), dy=odleglosc*sin(kierunek)
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.setColor(Color.red);
-		for (char ch : this.lSystemValue.toCharArray())
-		{
-			if (ch == 'F')
-			{
-		        oldx = x;
-		        oldy = y;
-		        x += (int)(steplong * Math.cos(Math.toRadians(angle)));
-		        y += (int)(steplong * Math.sin(Math.toRadians(angle)));
-		        g.drawLine((int)oldx,(int)oldy, x, y);
-				
+		Graphics2D g2 = (Graphics2D) g;
+		//g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		for (char ch : this.lSystemValue.toCharArray()) {
+			if (ch == 'F') {
+				oldx = x;
+				oldy = y;
+				x += (steplong * Math.cos(Math.toRadians(angle)));
+				y += (steplong * Math.sin(Math.toRadians(angle)));
+				Shape l = new Line2D.Double(oldx,oldy,x,y);
+				g2.draw(l); 
 			}
-			if (ch == '-')
-			{
+			if (ch == '-') {
 				angle -= iangle;
 			}
-			if (ch == '+')
-			{
+			if (ch == '+') {
 				angle += iangle;
 			}
 		}
-		setSteplong(getSteplong()/2);
+		this.steplong = (steplong * 0.8);
 	}
-
-	
-//	public class Turtle {
-//	    private double x, y;     // turtle is at (x, y)
-//	    private double angle;    // facing this many degrees counterclockwise from the x-axis
-//
-//	    // start at (x0, y0), facing a0 degrees counterclockwise from the x-axis
-//	    public Turtle(double x0, double y0, double a0) {
-//	        x = x0;
-//	        y = y0;
-//	        angle = a0;
-//	    }
-//
-//	    // rotate orientation delta degrees counterclockwise
-//	    public void turnLeft(double delta) {
-//	        angle += delta;
-//	    }
-//
-//	    // move forward the given amount, with the pen down
-//	    public void goForward(double step) {
-//	
-//	        StdDraw.line(oldx, oldy, x, y);
-//	    }
 }
