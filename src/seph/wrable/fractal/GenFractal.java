@@ -43,7 +43,6 @@ public class GenFractal {
 		if (getbuildervalue() == null) {
 			setbuildervalue(this.aksjomat);
 		}
-
 		for (char ch : this.buildervalue.toCharArray()) {
 			if (ch == 'F') {
 				bUildNewString += getRegula();
