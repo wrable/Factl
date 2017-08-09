@@ -10,8 +10,8 @@ import seph.wrable.fractal.*;
 public class MyWindowFractal extends JFrame implements ActionListener {
 
 	JButton bGenerujLSystem, bWyjscie;
-	JLabel lWyœwietlLSystem, lAksjomat, lRegula;
-	JTextField tWprowadzAksjomat, tWprowadzRegule;
+	JLabel  lAksjomat, lRegula;
+	JTextField tWprowadzAksjomat, tWprowadzRegule,tWyœwietlLSystem;
 	static GenFractal Fractal;
 
 	public MyWindowFractal() {
@@ -29,15 +29,15 @@ public class MyWindowFractal extends JFrame implements ActionListener {
 		add(bWyjscie);
 		bWyjscie.addActionListener(this);
 
-		lWyœwietlLSystem = new JLabel("Wynik");
-		lWyœwietlLSystem.setBounds(100, 150, 300, 100);
-		add(lWyœwietlLSystem);
+		tWyœwietlLSystem = new JTextField("Wynik");
+		tWyœwietlLSystem.setBounds(100, 170, 300, 20);
+		add(tWyœwietlLSystem);
 
 		lRegula = new JLabel("Regu³a");
 		lRegula.setBounds(100, 80, 300, 20);
 		add(lRegula);
 
-		lAksjomat = new JLabel("Aksjomat");
+		lAksjomat = new JLabel("Aksjomat [F]");
 		lAksjomat.setBounds(100, 30, 300, 20);
 		add(lAksjomat);
 
@@ -65,7 +65,7 @@ public class MyWindowFractal extends JFrame implements ActionListener {
 		if (source == bGenerujLSystem) {
 			Fractal.setAksjomat(tWprowadzAksjomat.getText());
 			Fractal.setRegula(tWprowadzRegule.getText());
-			lWyœwietlLSystem.setText(Fractal.FGenFractal());
+			tWyœwietlLSystem.setText(Fractal.FGenFractal());
 		}
 		if (source == bWyjscie) {
 			dispose(); // zamyka okno

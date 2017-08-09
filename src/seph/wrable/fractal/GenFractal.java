@@ -60,7 +60,7 @@ public class GenFractal {
 	// k¹t: 120 stopni
 
 	 public static void main(String[] args) {
-	 GenFractal fractal = new GenFractal("F", "F+F");
+	 GenFractal fractal = new GenFractal("F+F+F", "F+F-F-F+F");
 	 System.out.println(fractal.getAksjomat());
 	 System.out.println(fractal.FGenFractal());
 	 System.out.println(fractal.FGenFractal());
