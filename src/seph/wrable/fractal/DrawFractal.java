@@ -20,11 +20,11 @@ public class DrawFractal extends JPanel {
 	 * @param steplong
 	 *            krok
 	 */
-	public DrawFractal(double x, double y, double iangle, String lSystemValue) {
+	public DrawFractal(double x, double y, double steplong ,double iangle, String lSystemValue) {
 		super();
 		this.x = x / 2;
 		this.y = y;
-		this.steplong = 10;
+		this.steplong = steplong;
 		this.lSystemValue = lSystemValue;
 		this.iangle = iangle;
 		this.angle = 0;
@@ -69,6 +69,5 @@ public class DrawFractal extends JPanel {
 				angle += iangle;
 			}
 		}
-		this.steplong = (steplong * 0.8);
 	}
 }

@@ -44,11 +44,11 @@ public class MyWindowFractal extends JFrame implements ActionListener {
 		lAksjomat.setBounds(100, 30, 300, 20);
 		add(lAksjomat);
 
-		tWprowadzAksjomat = new JTextField("F++F++F");
+		tWprowadzAksjomat = new JTextField("F");
 		tWprowadzAksjomat.setBounds(100, 50, 300, 20);
 		add(tWprowadzAksjomat);
 
-		tWprowadzRegule = new JTextField("F-F++F-F");
+		tWprowadzRegule = new JTextField("+F--F+");
 		tWprowadzRegule.setBounds(100, 100, 300, 20);
 		add(tWprowadzRegule);
 
@@ -77,7 +77,9 @@ public class MyWindowFractal extends JFrame implements ActionListener {
 			 f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			 f.setSize(800, 1200);		 			
 			 f.setVisible(true);
-			 DrawFractal d = new DrawFractal(100,300,60,Fractal.FGenFractal());
+			 double size =20;
+			 DrawFractal d = new DrawFractal(400,400,size,45,Fractal.FGenFractal());
+			 size = size/2;
 			 f.add(d);
 			
 		}
