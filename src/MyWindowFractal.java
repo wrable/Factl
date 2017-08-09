@@ -33,7 +33,7 @@ public class MyWindowFractal extends JFrame implements ActionListener {
 		tWyœwietlLSystem.setBounds(100, 170, 300, 20);
 		add(tWyœwietlLSystem);
 
-		lRegula = new JLabel("Regu³a");
+		lRegula = new JLabel("Regu³a [F: ]");
 		lRegula.setBounds(100, 80, 300, 20);
 		add(lRegula);
 
