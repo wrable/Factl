@@ -1,12 +1,17 @@
 package seph.wrable.fractal;
+
 public class GenFractal {
-	private String aksjomat,regula,value;
+	private String aksjomat, regula, buildervalue;
 
 	public GenFractal(String aksjomat, String regula) {
 		super();
 		this.aksjomat = aksjomat;
 		this.regula = regula;
-		this.value = aksjomat;
+		this.buildervalue = null;
+	}
+
+	public GenFractal() {
+		this(null, null);
 	}
 
 	public String getAksjomat() {
@@ -23,42 +28,43 @@ public class GenFractal {
 
 	public void setRegula(String regula) {
 		this.regula = regula;
-	}	
-	public String getValue() {
-		return value;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public String getbuildervalue() {
+		return buildervalue;
+	}
+
+	public void setbuildervalue(String value) {
+		this.buildervalue = value;
 	}
 
 	public String FGenFractal() {
 		String bUildNewString = new String();
-		for (char ch : this.value.toCharArray())
-		{
-			if (ch == 'F')
-			{
-				bUildNewString+=getRegula();
-			}
-			else 
-			{
-				bUildNewString+=ch;
+		if (getbuildervalue() == null) {
+			setbuildervalue(this.aksjomat);
+		}
+
+		for (char ch : this.buildervalue.toCharArray()) {
+			if (ch == 'F') {
+				bUildNewString += getRegula();
+			} else {
+				bUildNewString += ch;
 			}
 		}
-		setValue(bUildNewString);
+		setbuildervalue(bUildNewString);
 		return bUildNewString;
 	}
 
-//	aksjomat: F+F+F
-//	regu³a: F: F+F-F-F+F
-//	k¹t: 120 stopni	
-	
-	public static void main(String[] args) {
-		GenFractal fractal = new GenFractal("F+F+F", "F+F-F-F+F");
-		System.out.println(fractal.getAksjomat());
-		System.out.println(fractal.FGenFractal());
-		System.out.println(fractal.FGenFractal());
-		System.out.println(fractal.FGenFractal());
-	}
-	
+	// aksjomat: F+F+F
+	// regu³a: F: F+F-F-F+F
+	// k¹t: 120 stopni
+
+	 public static void main(String[] args) {
+	 GenFractal fractal = new GenFractal("F", "F+F");
+	 System.out.println(fractal.getAksjomat());
+	 System.out.println(fractal.FGenFractal());
+	 System.out.println(fractal.FGenFractal());
+	 System.out.println(fractal.FGenFractal());
+	 }
+
 }
