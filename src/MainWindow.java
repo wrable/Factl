@@ -34,6 +34,7 @@ public class MainWindow {
 	private JTextField txtKat;
 	public double size;
 	static GenFractal Fraktal;
+	private JTextField txtDlugoscOdcinka;
 
 	/**
 	 * Launch the application.
@@ -69,7 +70,7 @@ public class MainWindow {
 		frame.getContentPane().setLayout(null);
 
 		JLabel lblAksjomat = new JLabel("Aksjomat");
-		lblAksjomat.setBounds(10, 43, 83, 14);
+		lblAksjomat.setBounds(10, 40, 83, 14);
 		frame.getContentPane().add(lblAksjomat);
 
 		JLabel lblRegula = new JLabel("Regula");
@@ -82,7 +83,7 @@ public class MainWindow {
 
 		txtAksjomat = new JTextField();
 		txtAksjomat.setText("");
-		txtAksjomat.setBounds(99, 40, 311, 20);
+		txtAksjomat.setBounds(99, 37, 311, 20);
 		frame.getContentPane().add(txtAksjomat);
 		txtAksjomat.setColumns(10);
 
@@ -101,19 +102,19 @@ public class MainWindow {
 		JTextArea textArea = new JTextArea();
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
-		textArea.setBounds(9, 168, 400, 371);
+		textArea.setBounds(9, 214, 400, 325);
 		frame.getContentPane().add(textArea);
 
 		JLabel lblDebug = new JLabel("Debug");
-		lblDebug.setBounds(10, 145, 46, 14);
+		lblDebug.setBounds(10, 189, 46, 14);
 		frame.getContentPane().add(lblDebug);
 
 		JButton btnGenerujLsystem = new JButton("Generuj L-System");
-		btnGenerujLsystem.setBounds(10, 118, 400, 23);
+		btnGenerujLsystem.setBounds(10, 155, 400, 23);
 		frame.getContentPane().add(btnGenerujLsystem);
 
 		JLabel lblPreset = new JLabel("Preset");
-		lblPreset.setBounds(11, 17, 82, 14);
+		lblPreset.setBounds(11, 11, 82, 14);
 		frame.getContentPane().add(lblPreset);
 
 		JComboBox<Preset> comboBox = new JComboBox<Preset>();
@@ -140,8 +141,18 @@ public class MainWindow {
 				Fraktal.setbuildervalue(null);
 			}
 		});
-		comboBox.setBounds(99, 14, 311, 20);
+		comboBox.setBounds(99, 8, 311, 20);
 		frame.getContentPane().add(comboBox);
+		
+		txtDlugoscOdcinka = new JTextField();
+		txtDlugoscOdcinka.setText("20");
+		txtDlugoscOdcinka.setBounds(99, 115, 310, 20);
+		frame.getContentPane().add(txtDlugoscOdcinka);
+		txtDlugoscOdcinka.setColumns(10);
+		
+		JLabel lblLOdcinka = new JLabel("L odcinka");
+		lblLOdcinka.setBounds(10, 118, 46, 14);
+		frame.getContentPane().add(lblLOdcinka);
 		comboBox.addItem(Preset.pentadendryt);
 		comboBox.addItem(Preset.trójk¹t_Sierpinskiego);
 		comboBox.addItem(Preset.p³atek_œniegu_kocha);
@@ -157,9 +168,7 @@ public class MainWindow {
 				f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				f.setSize(800, 1200);
 				f.setVisible(true);
-				size = 20;
-				DrawFractal d = new DrawFractal(400, 400, size, Integer.parseInt(txtKat.getText()), Fraktal.FGenFractal());
-				size = size / 2;
+				DrawFractal d = new DrawFractal(400, 400, Integer.parseInt(txtDlugoscOdcinka.getText()), Integer.parseInt(txtKat.getText()), Fraktal.FGenFractal());
 				f.getContentPane().add(d);
 			}
 		});
