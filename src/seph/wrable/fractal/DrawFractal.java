@@ -10,6 +10,10 @@ import javax.swing.JPanel;
 
 public class DrawFractal extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private double x, y, steplong, iangle, oldx, oldy, angle;
 	private String lSystemValue;
 
