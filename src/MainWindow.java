@@ -1,8 +1,11 @@
 import java.awt.EventQueue;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -10,9 +13,6 @@ import javax.swing.JTextField;
 
 import seph.wrable.fractal.DrawFractal;
 import seph.wrable.fractal.GenFractal;
-import javax.swing.JComboBox;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
 
 public class MainWindow {
 	public enum Preset {
@@ -28,7 +28,6 @@ public class MainWindow {
 			this.angle = angle;
 		}
 	}
-	private Preset preset;
 	private JFrame frame;
 	private JTextField txtAksjomat;
 	private JTextField txtRegula;
@@ -117,26 +116,26 @@ public class MainWindow {
 		lblPreset.setBounds(11, 17, 82, 14);
 		frame.getContentPane().add(lblPreset);
 
-		JComboBox comboBox = new JComboBox();
+		JComboBox<Preset> comboBox = new JComboBox<Preset>();
 		comboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
-				if (preset.trójk¹t_Sierpinskiego == comboBox.getSelectedItem())
+				if (Preset.trójk¹t_Sierpinskiego == comboBox.getSelectedItem())
 				{
-					txtAksjomat.setText(preset.trójk¹t_Sierpinskiego.aksjomat);
-					txtRegula.setText(preset.trójk¹t_Sierpinskiego.rule);
-					txtKat.setText(preset.trójk¹t_Sierpinskiego.angle);
+					txtAksjomat.setText(Preset.trójk¹t_Sierpinskiego.aksjomat);
+					txtRegula.setText(Preset.trójk¹t_Sierpinskiego.rule);
+					txtKat.setText(Preset.trójk¹t_Sierpinskiego.angle);
 				}
-				if (preset.p³atek_œniegu_kocha == comboBox.getSelectedItem())
+				if (Preset.p³atek_œniegu_kocha == comboBox.getSelectedItem())
 				{
-					txtAksjomat.setText(preset.p³atek_œniegu_kocha.aksjomat);
-					txtRegula.setText(preset.p³atek_œniegu_kocha.rule);
-					txtKat.setText(preset.p³atek_œniegu_kocha.angle);
+					txtAksjomat.setText(Preset.p³atek_œniegu_kocha.aksjomat);
+					txtRegula.setText(Preset.p³atek_œniegu_kocha.rule);
+					txtKat.setText(Preset.p³atek_œniegu_kocha.angle);
 				}
-				if (preset.pentadendryt == comboBox.getSelectedItem())
+				if (Preset.pentadendryt == comboBox.getSelectedItem())
 				{
-					txtAksjomat.setText(preset.pentadendryt.aksjomat);
-					txtRegula.setText(preset.pentadendryt.rule);
-					txtKat.setText(preset.pentadendryt.angle);
+					txtAksjomat.setText(Preset.pentadendryt.aksjomat);
+					txtRegula.setText(Preset.pentadendryt.rule);
+					txtKat.setText(Preset.pentadendryt.angle);
 				}
 				Fraktal.setbuildervalue(null);
 			}
