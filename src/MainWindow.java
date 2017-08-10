@@ -5,20 +5,37 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import seph.wrable.fractal.DrawFractal;
 import seph.wrable.fractal.GenFractal;
+import javax.swing.JComboBox;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class MainWindow {
+	public enum Preset {
+		trójk¹t_Sierpinskiego("F+F+F", "F+F-F-F+F", "120"), p³atek_œniegu_kocha("F++F++F", "F-F++F-F",
+				"60"), pentadendryt("F", "F+F-F--F+F+F", "72");
+		private String aksjomat;
+		private String rule;
+		private String angle;
 
+		private Preset(String aksjomat, String rule, String angle) {
+			this.aksjomat = aksjomat;
+			this.rule = rule;
+			this.angle = angle;
+		}
+	}
+	private Preset preset;
 	private JFrame frame;
 	private JTextField txtAksjomat;
 	private JTextField txtRegula;
 	private JTextField txtKat;
+	public double size;
 	static GenFractal Fraktal;
+
 	/**
 	 * Launch the application.
 	 */
@@ -48,71 +65,103 @@ public class MainWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 435, 790);
+		frame.setBounds(100, 100, 435, 592);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		JLabel lblAksjomat = new JLabel("Aksjomat");
-		lblAksjomat.setBounds(10, 11, 46, 14);
+		lblAksjomat.setBounds(10, 43, 83, 14);
 		frame.getContentPane().add(lblAksjomat);
-		
+
 		JLabel lblRegula = new JLabel("Regula");
-		lblRegula.setBounds(10, 36, 46, 14);
+		lblRegula.setBounds(10, 68, 83, 14);
 		frame.getContentPane().add(lblRegula);
-		
+
 		JLabel lblKat = new JLabel("Kat");
-		lblKat.setBounds(10, 61, 46, 14);
+		lblKat.setBounds(10, 93, 83, 14);
 		frame.getContentPane().add(lblKat);
-		
+
 		txtAksjomat = new JTextField();
-		txtAksjomat.setText("F");
-		txtAksjomat.setBounds(66, 8, 344, 20);
+		txtAksjomat.setText("");
+		txtAksjomat.setBounds(99, 40, 311, 20);
 		frame.getContentPane().add(txtAksjomat);
 		txtAksjomat.setColumns(10);
-		
+
 		txtRegula = new JTextField();
-		txtRegula.setText("F+F-F--F+F+F");
-		txtRegula.setBounds(66, 33, 344, 20);
+		txtRegula.setText("");
+		txtRegula.setBounds(99, 65, 311, 20);
 		frame.getContentPane().add(txtRegula);
 		txtRegula.setColumns(10);
-		
+
 		txtKat = new JTextField();
-		txtKat.setText("72");
-		txtKat.setBounds(66, 58, 344, 20);
+		txtKat.setText("");
+		txtKat.setBounds(99, 90, 311, 20);
 		frame.getContentPane().add(txtKat);
 		txtKat.setColumns(10);
-		
+
 		JTextArea textArea = new JTextArea();
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
-		textArea.setBounds(10, 134, 400, 191);
+		textArea.setBounds(9, 168, 400, 371);
 		frame.getContentPane().add(textArea);
-		
+
 		JLabel lblDebug = new JLabel("Debug");
-		lblDebug.setBounds(10, 113, 46, 14);
+		lblDebug.setBounds(10, 145, 46, 14);
 		frame.getContentPane().add(lblDebug);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(10, 336, 400, 404);
-		frame.getContentPane().add(panel);
-		
+
 		JButton btnGenerujLsystem = new JButton("Generuj L-System");
-		btnGenerujLsystem.setBounds(10, 86, 400, 23);
+		btnGenerujLsystem.setBounds(10, 118, 400, 23);
 		frame.getContentPane().add(btnGenerujLsystem);
+
+		JLabel lblPreset = new JLabel("Preset");
+		lblPreset.setBounds(11, 17, 82, 14);
+		frame.getContentPane().add(lblPreset);
+
+		JComboBox comboBox = new JComboBox();
+		comboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				if (preset.trójk¹t_Sierpinskiego == comboBox.getSelectedItem())
+				{
+					txtAksjomat.setText(preset.trójk¹t_Sierpinskiego.aksjomat);
+					txtRegula.setText(preset.trójk¹t_Sierpinskiego.rule);
+					txtKat.setText(preset.trójk¹t_Sierpinskiego.angle);
+				}
+				if (preset.p³atek_œniegu_kocha == comboBox.getSelectedItem())
+				{
+					txtAksjomat.setText(preset.p³atek_œniegu_kocha.aksjomat);
+					txtRegula.setText(preset.p³atek_œniegu_kocha.rule);
+					txtKat.setText(preset.p³atek_œniegu_kocha.angle);
+				}
+				if (preset.pentadendryt == comboBox.getSelectedItem())
+				{
+					txtAksjomat.setText(preset.pentadendryt.aksjomat);
+					txtRegula.setText(preset.pentadendryt.rule);
+					txtKat.setText(preset.pentadendryt.angle);
+				}
+			}
+		});
+		comboBox.setBounds(99, 14, 311, 20);
+		frame.getContentPane().add(comboBox);
+		comboBox.addItem(Preset.pentadendryt);
+		comboBox.addItem(Preset.trójk¹t_Sierpinskiego);
+		comboBox.addItem(Preset.p³atek_œniegu_kocha);
+		
 		btnGenerujLsystem.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-			Fraktal.setAksjomat(txtAksjomat.getText());
-			Fraktal.setRegula(txtRegula.getText());	
-			textArea.setText(Fraktal.FGenFractal());
-			DrawFractal d = new DrawFractal(400,400,20,45,Fraktal.FGenFractal());
-			panel.add(d);
+				Fraktal.setAksjomat(txtAksjomat.getText());
+				Fraktal.setRegula(txtRegula.getText());
+				textArea.setText(Fraktal.FGenFractal());
+
+				JFrame f = new JFrame("Nowe okno");
+				f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				f.setSize(800, 1200);
+				f.setVisible(true);
+				size = 20;
+				DrawFractal d = new DrawFractal(400, 400, size, Integer.parseInt(txtKat.getText()), Fraktal.FGenFractal());
+				size = size / 2;
+				f.getContentPane().add(d);
 			}
 		});
-
-		
-		
-		
-		
 	}
 }

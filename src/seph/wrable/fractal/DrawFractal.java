@@ -1,4 +1,5 @@
 package seph.wrable.fractal;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -8,19 +9,11 @@ import java.awt.geom.Line2D;
 import javax.swing.JPanel;
 
 public class DrawFractal extends JPanel {
-	
-	private double x, y,steplong,iangle, oldx, oldy, angle;
+
+	private double x, y, steplong, iangle, oldx, oldy, angle;
 	private String lSystemValue;
 
-	/**
-	 * @param x
-	 *            szerokosc okna
-	 * @param y
-	 *            wysokosc okna
-	 * @param steplong
-	 *            krok
-	 */
-	public DrawFractal(double x, double y, double steplong ,double iangle, String lSystemValue) {
+	public DrawFractal(double x, double y, double steplong, double iangle, String lSystemValue) {
 		super();
 		this.x = x / 2;
 		this.y = y;
@@ -29,8 +22,6 @@ public class DrawFractal extends JPanel {
 		this.iangle = iangle;
 		this.angle = 0;
 	}
-
-	
 
 	public void setX(double x) {
 		this.x = x;
@@ -58,8 +49,8 @@ public class DrawFractal extends JPanel {
 				oldy = y;
 				x += (steplong * Math.cos(Math.toRadians(angle)));
 				y += (steplong * Math.sin(Math.toRadians(angle)));
-				Shape l = new Line2D.Double(oldx,oldy,x,y);
-				g2.draw(l); 
+				Shape l = new Line2D.Double(oldx, oldy, x, y);
+				g2.draw(l);
 			}
 			if (ch == '-') {
 				angle -= iangle;
