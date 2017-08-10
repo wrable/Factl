@@ -138,6 +138,7 @@ public class MainWindow {
 					txtRegula.setText(preset.pentadendryt.rule);
 					txtKat.setText(preset.pentadendryt.angle);
 				}
+				Fraktal.setbuildervalue(null);
 			}
 		});
 		comboBox.setBounds(99, 14, 311, 20);
