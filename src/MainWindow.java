@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -12,9 +11,6 @@ import javax.swing.JTextField;
 
 import seph.wrable.fractal.DrawFractal;
 import seph.wrable.fractal.GenFractal;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Canvas;
 
 public class MainWindow {
 
@@ -52,7 +48,7 @@ public class MainWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1122, 790);
+		frame.setBounds(100, 100, 435, 790);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -96,19 +92,24 @@ public class MainWindow {
 		lblDebug.setBounds(10, 113, 46, 14);
 		frame.getContentPane().add(lblDebug);
 		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 336, 400, 404);
+		frame.getContentPane().add(panel);
+		
 		JButton btnGenerujLsystem = new JButton("Generuj L-System");
+		btnGenerujLsystem.setBounds(10, 86, 400, 23);
+		frame.getContentPane().add(btnGenerujLsystem);
 		btnGenerujLsystem.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 			Fraktal.setAksjomat(txtAksjomat.getText());
 			Fraktal.setRegula(txtRegula.getText());	
 			textArea.setText(Fraktal.FGenFractal());
-			DrawFractal d= new DrawFractal(200, 200, 20, Integer.parseInt(txtKat.getText()), Fraktal.FGenFractal());
-			frame.add(d);
+			DrawFractal d = new DrawFractal(400,400,20,45,Fraktal.FGenFractal());
+			panel.add(d);
 			}
 		});
-		btnGenerujLsystem.setBounds(10, 86, 400, 23);
-		frame.getContentPane().add(btnGenerujLsystem);
+
 		
 		
 		
