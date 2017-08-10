@@ -65,6 +65,7 @@ public class MainWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("L-Systemy");
 		frame.setBounds(100, 100, 435, 592);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -145,7 +146,7 @@ public class MainWindow {
 		frame.getContentPane().add(comboBox);
 		
 		txtDlugoscOdcinka = new JTextField();
-		txtDlugoscOdcinka.setText("20");
+		txtDlugoscOdcinka.setText("30");
 		txtDlugoscOdcinka.setBounds(99, 115, 310, 20);
 		frame.getContentPane().add(txtDlugoscOdcinka);
 		txtDlugoscOdcinka.setColumns(10);
@@ -168,7 +169,7 @@ public class MainWindow {
 				f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				f.setSize(800, 1200);
 				f.setVisible(true);
-				DrawFractal d = new DrawFractal(400, 400, Integer.parseInt(txtDlugoscOdcinka.getText()), Integer.parseInt(txtKat.getText()), Fraktal.FGenFractal());
+				DrawFractal d = new DrawFractal(200, 500, Integer.parseInt(txtDlugoscOdcinka.getText()), Integer.parseInt(txtKat.getText()), Fraktal.FGenFractal());
 				f.getContentPane().add(d);
 			}
 		});
