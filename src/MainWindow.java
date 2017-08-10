@@ -162,7 +162,7 @@ public class MainWindow {
 		txtDlugoscOdcinka.setColumns(10);
 		
 		JLabel lblLOdcinka = new JLabel("L odcinka");
-		lblLOdcinka.setBounds(10, 118, 46, 14);
+		lblLOdcinka.setBounds(10, 118, 83, 14);
 		frame.getContentPane().add(lblLOdcinka);
 		
 		JButton btnReset = new JButton("Reset");
