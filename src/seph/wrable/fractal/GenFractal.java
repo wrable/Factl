@@ -48,16 +48,15 @@ public class GenFractal {
 		bS.setLength(0); // ZEROWANIE STRING BUILDERA 
 		for (char ch : this.buildervalue.toCharArray()) {
 			if (ch == 'F') {
-				//bUildNewString += getRegula();
+//				bUildNewString += getRegula();
 				bS.append(getRegula());
 			} else {
-				//bUildNewString += ch;
+//				bUildNewString += ch;
 				bS.append(ch);
 			}
 		}
 		bUildNewString = bS.toString();
 		setbuildervalue(bUildNewString);
-		bS.setLength(0);
 		return bUildNewString;
 	}
 
