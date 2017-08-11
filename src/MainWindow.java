@@ -189,7 +189,7 @@ public class MainWindow {
 					f.setSize(800, 1200);
 					f.setVisible(true);
 					DrawFractal d = new DrawFractal(350, 600, Integer.parseInt(txtDlugoscOdcinka.getText()),
-							Integer.parseInt(txtKat.getText()), Fraktal.FGenFractal());
+					Integer.parseInt(txtKat.getText()), Fraktal.FGenFractal());
 					f.getContentPane().add(d);
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
