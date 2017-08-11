@@ -40,16 +40,21 @@ public class GenFractal {
 
 	public String FGenFractal() {
 		String bUildNewString = new String();
+		StringBuilder bS = new StringBuilder();
 		if (getbuildervalue() == null) {
 			setbuildervalue(this.aksjomat);
+			bS.append(getbuildervalue());
 		}
 		for (char ch : this.buildervalue.toCharArray()) {
 			if (ch == 'F') {
-				bUildNewString += getRegula();
+				 //bUildNewString += getRegula();
+				 bS.append(getRegula());
 			} else {
-				bUildNewString += ch;
+				 //bUildNewString += ch;
+				 bS.append(ch);
 			}
 		}
+		bUildNewString = bS.toString();
 		setbuildervalue(bUildNewString);
 		return bUildNewString;
 	}
@@ -58,12 +63,15 @@ public class GenFractal {
 	// regu³a: F: F+F-F-F+F
 	// k¹t: 120 stopni
 
-	 public static void main(String[] args) {
-	 GenFractal fractal = new GenFractal("F+F+F", "F+F-F-F+F");
-	 System.out.println(fractal.getAksjomat());
-	 System.out.println(fractal.FGenFractal());
-	 System.out.println(fractal.FGenFractal());
-	 System.out.println(fractal.FGenFractal());
-	 }
+	public static void main(String[] args) {
+		GenFractal fractal = new GenFractal("F+F+F", "F+F-F-F+F");
+		System.out.println(fractal.getAksjomat());
+		System.out.println(fractal.FGenFractal());
+		System.out.println(fractal.FGenFractal());
+		System.out.println(fractal.FGenFractal());
+		System.out.println(fractal.FGenFractal());
+		System.out.println(fractal.FGenFractal());
+		System.out.println(fractal.FGenFractal());
+	}
 
 }
